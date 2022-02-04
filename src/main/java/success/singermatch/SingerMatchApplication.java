@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SingermatchApplication {
+public class SingerMatchApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SingermatchApplication.class, args);
+		SpringApplication.run(SingerMatchApplication.class, args);
 	}
 
 }
