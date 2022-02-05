@@ -3,11 +3,12 @@ package success.singermatch.global.error;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
 import org.springframework.validation.BindingResult;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Getter
@@ -24,11 +25,11 @@ public class ErrorResponse {
         errors = new ArrayList<>();
     }
 
-    public ErrorResponse(final String message, final int status, final String code, BindingResult bindingResult) {
+    public ErrorResponse(final String message, final int status, final String code, BindingResult bindingResult, MessageSource messageSource) {
         this.message = message;
         this.status = status;
         this.code = code;
-        this.errors = FieldError.of(bindingResult);
+        this.errors = FieldError.of(bindingResult,messageSource);
     }
 
 
@@ -51,14 +52,14 @@ public class ErrorResponse {
             return fieldErrors;
         }
 
-        private static List<FieldError> of(final BindingResult bindingResult) {
-            final List<org.springframework.validation.FieldError> list = bindingResult.getFieldErrors();
-            return list.stream()
-                    .map(error -> new FieldError(
-                            error.getField()
-                            , error.getRejectedValue() == null ? "" : error.getRejectedValue().toString()
-                            , error.getDefaultMessage()))
-                    .collect(Collectors.toList());
+        private static List<FieldError> of(final BindingResult bindingResult,MessageSource messageSource) {
+                final List<org.springframework.validation.FieldError> list = bindingResult.getFieldErrors();
+                return list.stream()
+                        .map(error -> new FieldError(
+                                error.getField()
+                                , error.getRejectedValue() == null ? "" : error.getRejectedValue().toString()
+                                , messageSource.getMessage(error, Locale.KOREA)))
+                        .collect(Collectors.toList());
         }
     }
 
