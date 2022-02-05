@@ -15,34 +15,21 @@ public class LogInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // Request가 들어오고 Controller에 넘어가기 직전에 처리
-
         String requestURI = request.getRequestURI();
-
         String uuid = StringUtil.generateRandomStr();
-
-        // 들어온 url을 받아줄 수 있는 클래스가 있는지 확인한다.
-/*
-        if (handler instanceof HandlerMethod) {
-            HandlerMethod hm = (HandlerMethod) handler;
-        }
-*/
 
         log.info("REQUEST [{}] [{}]", requestURI, handler);
 
-        // true - 다음으로 진행, false - 종료
-        return true;
+        return true;  // true - 다음으로 진행, false - 종료
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        // Controller에서 요청이 다 마무리하고, View로 Rendering하게 전에 처리
-
+//        log.info("interceptor postHandle");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        // Controller에서 요청이 다 마무리되고, View의 Rendering이 다 끝나면 처리
-
+//        log.info("interceptor afterCompletion");
     }
 }
