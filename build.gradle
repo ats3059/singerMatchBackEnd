@@ -21,6 +21,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+	// @ConfigurationProperties 어노테이션 추가시 메타데이터를 생성해 자동완성 기능을 가능하게 해주는 의존성
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
