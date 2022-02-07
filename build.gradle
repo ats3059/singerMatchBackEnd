@@ -24,6 +24,7 @@ dependencies {
 
 	// mail
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
 	// @ConfigurationProperties 어노테이션 추가시 메타데이터를 생성해 자동완성 기능을 가능하게 해주는 의존성
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
