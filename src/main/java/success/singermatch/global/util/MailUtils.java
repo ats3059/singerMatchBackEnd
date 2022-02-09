@@ -56,15 +56,30 @@ public class MailUtils {
         }
     }
 
-    // 내용에 html을 담기 위한 작업
-    private void setMailContent(String content, MimeMessage mm) throws MessagingException {
-        Multipart mPart = new MimeMultipart();
-        MimeBodyPart mBody = new MimeBodyPart();
 
-        mBody.setText(content, "UTF-8", "html");
-        mPart.addBodyPart(mBody);
 
-        mm.setContent(mPart);
+
+    /**
+     * 단건 - 수신, 발신자를 Address객체로 반환시켜준다.
+     * @Param mail 수신자 메일
+     * usage - mm.setRecipients(Message.RecipientType.TO, setAddress(to));
+     */
+    private InternetAddress setAddress(String mail) throws Exception {
+        return new InternetAddress(mail);
+    }
+
+    /**
+     * 다건 - 수신, 발신자를 Address객체로 반환시켜준다.
+     * @Param mails 수신자 메일 배열
+     * usage - mm.setRecipients(Message.RecipientType.TO, setAddresses(to));
+     */
+    private InternetAddress[] setAddress(String[] mails) throws Exception {
+        InternetAddress[] mailsArr = new InternetAddress[mails.length];
+
+        for (int i = 0; i < mailsArr.length; i++)
+            mailsArr[i] = new InternetAddress(mails[i]);
+
+        return mailsArr;
     }
 
 
@@ -79,29 +94,17 @@ public class MailUtils {
         return templateEngine.process(templateName, context);
     }
 
-    /**
-     * 단건 - 수신, 발신자를 Address객체로 반환시켜준다.
-     * @Param mail 수신자 메일
-     * usage - mm.setRecipients(Message.RecipientType.TO, setAddress(to));
-     */
-    private InternetAddress setAddress(String mail) throws Exception {
-        return new InternetAddress(mail);
+
+    // 내용에 html을 담기 위한 작업
+    private void setMailContent(String content, MimeMessage mm) throws MessagingException {
+        Multipart mPart = new MimeMultipart();
+        MimeBodyPart mBody = new MimeBodyPart();
+
+        mBody.setText(content, "UTF-8", "html");
+        mPart.addBodyPart(mBody);
+
+        mm.setContent(mPart);
     }
-
-    /**
-     * 다건 - 수신, 발신자를 Address객체로 반환시켜준다.
-     * @Param mails 수신자 메일 배열
-     * usage - mm.setRecipients(Message.RecipientType.TO, setAddresses(tos));
-     */
-    private InternetAddress[] setAddresses(String[] mails) throws Exception {
-        InternetAddress[] mailsArr = new InternetAddress[mails.length];
-
-        for (int i = 0; i < mailsArr.length; i++)
-            mailsArr[i] = new InternetAddress(mails[i]);
-
-        return mailsArr;
-    }
-
 }
 
 
