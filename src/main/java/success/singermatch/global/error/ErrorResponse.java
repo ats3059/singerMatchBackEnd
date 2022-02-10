@@ -1,6 +1,7 @@
 package success.singermatch.global.error;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -46,7 +47,7 @@ public class ErrorResponse {
             this.reason = reason;
         }
 
-        public static List<FieldError> of(final String field, final String value, final String reason) {
+        private static List<FieldError> of(final String field, final String value, final String reason) {
             List<FieldError> fieldErrors = new ArrayList<>();
             fieldErrors.add(new FieldError(field, value, reason));
             return fieldErrors;
@@ -58,7 +59,7 @@ public class ErrorResponse {
                         .map(error -> new FieldError(
                                 error.getField()
                                 , error.getRejectedValue() == null ? "" : error.getRejectedValue().toString()
-                                , messageSource.getMessage(error, Locale.KOREA)))
+                                , messageSource.getMessage(error, Locale.KOREAN)))
                         .collect(Collectors.toList());
         }
     }
