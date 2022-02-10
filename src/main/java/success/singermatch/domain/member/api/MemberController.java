@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import success.singermatch.domain.member.dto.Member;
-import success.singermatch.domain.member.repository.MemberRepository;
+import success.singermatch.domain.member.service.MemberService;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,27 +15,30 @@ import java.util.Optional;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/member")
 public class MemberController {
 
-    private final MemberRepository memberRepository;
+//    private final MemberRepository memberRepository;
+    private final MemberService memberService;
 
     @PostMapping("/add")
-    public String add(Member member) {
-        memberRepository.save(member);
+    public String add(Member member) throws Exception {
+        memberService.save(member);
         return "ok";
+//        return "redirect:/api/member/login";
     }
 
-    @PostMapping("/findAll")
+    @GetMapping("/findAll")
     public List<Member> findAll() {
-        return memberRepository.findAll();
+        return memberService.findAll();
     }
 
-    @PostMapping("/check")
+
+    @GetMapping("/check")
     public String checkId(String userId) {
-        Optional<Member> byId = memberRepository.checkId(userId);
+        Optional<Member> byId = memberService.checkId(userId);
         if (byId.isPresent())
-            return byId.get().getUserId() + "는 이미 사용중입니다.";
+            return byId.get().getUserId() + "는 이미 사용중인 아이디 입니다.";
         else
             return "사용가능한 아이디 입니다.";
     }
