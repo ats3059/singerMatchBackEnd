@@ -1,4 +1,4 @@
-package success.singermatch.domain.tmp1.api;
+package success.singermatch.domain.mail.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-public class TmpController {
+public class MailTestController {
 
     private final MailUtils mailUtils;
 

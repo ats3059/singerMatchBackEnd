@@ -16,8 +16,8 @@ public class HashSalt {
 
         for (int i = 0; i < 10000; i++) {
             String saltedPassword = byteToString(password) + salt;  // 원본 password와 salt를 합쳐 새로운 문자를 생성한다.
-            md.update(saltedPassword.getBytes());  // saltedPassword의 문자열을 해싱하여 md에 담아둔다.
-            password = md.digest();// md객체로 digest를 얻어 password를 갱신한다.
+            md.update(saltedPassword.getBytes());             // saltedPassword의 문자열을 해싱하여 md에 담아둔다.
+            password = md.digest();                           // md객체로 digest를 얻어 password를 갱신한다.
         }
 
         return byteToString(password);

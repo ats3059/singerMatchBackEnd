@@ -1,9 +1,6 @@
-package success.singermatch.domain.member.dto;
+package success.singermatch.domain.common;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 
@@ -11,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor
 public class Member {
 
     @NotBlank
@@ -28,5 +26,10 @@ public class Member {
 
     private String address;
 
-    private HashingPassword hashingPassword;
+    private String salt;
+
+    private String hashingPassword;
+
+    private LoginStatus loginStatus;
+
 }
