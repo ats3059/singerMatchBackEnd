@@ -26,7 +26,6 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 !**/src/test/**/out/
-!**/src/test/java/success/singermatch/member/**
 
 ### NetBeans ###
 /nbproject/private/
@@ -37,3 +36,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### bjs ###
+/src/test/java/success/singermatch/member/**
