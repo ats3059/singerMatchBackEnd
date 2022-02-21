@@ -1,4 +1,4 @@
-package success.singermatch.domain.common;
+package success.singermatch.domain.member.common;
 
 import lombok.*;
 

@@ -1,20 +1,18 @@
-package success.singermatch.domain.login.api;
+package success.singermatch.domain.member.login.api;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import success.singermatch.domain.common.LoginResponse;
-import success.singermatch.domain.common.LoginStatus;
-import success.singermatch.domain.common.SessionConst;
-import success.singermatch.domain.common.Member;
-import success.singermatch.domain.login.dto.LoginForm;
-import success.singermatch.domain.login.service.LoginService;
-import success.singermatch.domain.member.service.MemberService;
+import success.singermatch.domain.member.common.LoginResponse;
+import success.singermatch.domain.member.common.LoginStatus;
+import success.singermatch.domain.member.common.SessionConst;
+import success.singermatch.domain.member.common.Member;
+import success.singermatch.domain.member.login.dto.LoginForm;
+import success.singermatch.domain.member.login.service.LoginService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor

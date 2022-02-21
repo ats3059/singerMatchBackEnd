@@ -1,6 +1,6 @@
-package success.singermatch.domain.member.repository;
+package success.singermatch.domain.member.signup.repository;
 
-import success.singermatch.domain.common.Member;
+import success.singermatch.domain.member.common.Member;
 
 import java.util.List;
 import java.util.Optional;

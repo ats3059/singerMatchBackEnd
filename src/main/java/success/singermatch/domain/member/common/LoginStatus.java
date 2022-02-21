@@ -1,4 +1,4 @@
-package success.singermatch.domain.common;
+package success.singermatch.domain.member.common;
 
 /**
  * 로그인 시도 상태값

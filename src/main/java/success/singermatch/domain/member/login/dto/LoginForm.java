@@ -1,4 +1,4 @@
-package success.singermatch.domain.login.dto;
+package success.singermatch.domain.member.login.dto;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

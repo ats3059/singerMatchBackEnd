@@ -1,13 +1,12 @@
-package success.singermatch.domain.login.service;
+package success.singermatch.domain.member.login.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import success.singermatch.domain.common.TmpDatabase;
-import success.singermatch.domain.common.LoginStatus;
-import success.singermatch.domain.login.dto.LoginForm;
-import success.singermatch.domain.common.Member;
-import success.singermatch.domain.login.repository.LoginRepository;
+import success.singermatch.domain.member.common.LoginStatus;
+import success.singermatch.domain.member.login.dto.LoginForm;
+import success.singermatch.domain.member.common.Member;
+import success.singermatch.domain.member.login.repository.LoginRepository;
 import success.singermatch.global.util.HashSalt;
 
 @Slf4j

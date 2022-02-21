@@ -1,9 +1,8 @@
 package success.singermatch.global.config.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerInterceptor;
-import success.singermatch.domain.common.SessionConst;
+import success.singermatch.domain.member.common.SessionConst;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

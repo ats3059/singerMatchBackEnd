@@ -1,10 +1,10 @@
-package success.singermatch.domain.member.service;
+package success.singermatch.domain.member.signup.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import success.singermatch.domain.common.Member;
-import success.singermatch.domain.member.repository.MemberRepository;
+import success.singermatch.domain.member.common.Member;
+import success.singermatch.domain.member.signup.repository.MemberRepository;
 import success.singermatch.global.util.HashSalt;
 
 import java.util.List;

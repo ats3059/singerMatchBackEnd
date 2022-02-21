@@ -1,17 +1,13 @@
-package success.singermatch.domain.member.api;
+package success.singermatch.domain.member.signup.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import success.singermatch.domain.common.Member;
-import success.singermatch.domain.member.repository.MemberRepository;
-import success.singermatch.domain.member.service.MemberService;
+import success.singermatch.domain.member.common.Member;
+import success.singermatch.domain.member.signup.repository.MemberRepository;
+import success.singermatch.domain.member.signup.service.MemberService;
 
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
