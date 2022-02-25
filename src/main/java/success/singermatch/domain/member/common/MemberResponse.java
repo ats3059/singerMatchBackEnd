@@ -4,13 +4,13 @@ import lombok.*;
 
 
 /**
- * 로그인 시도 결과
+ * 로그인 및 회원가입 시도 결과
  */
 @Getter
 @Setter
 @EqualsAndHashCode
 @Builder
-public class LoginResponse {
+public class MemberResponse {
 
     private String message;
 

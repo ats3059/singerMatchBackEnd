@@ -11,5 +11,5 @@ public interface MemberRepository {
 
     List<Member> findAll();
 
-    Optional<Member> checkIdDuplication(String userId);
+    boolean checkIdDuplication(String userId);
 }

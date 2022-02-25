@@ -16,9 +16,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/**");
 //                .excludePathPatterns("/css/**", "/*.ico", "/error");
-        registry.addInterceptor(new LoginCheckInterceptor())
-                .order(2)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/api/member/add", "/api/member/check", "/api/member/findAll", "/login", "/login");
+//        registry.addInterceptor(new LoginCheckInterceptor())
+//                .order(2)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/api/member/add", "/api/member/check", "/api/member/findAll", "/login", "/login", "/error");
     }
 }

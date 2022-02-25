@@ -29,11 +29,13 @@ public class MemoryMemberRepository implements MemberRepository {
         return new ArrayList<Member>(tmpDB.memberStore.values());
     }
 
-    // 아이디 중복 체크
+    /**
+     *  ID 중복 체크
+     *  true - ID 중복
+     *  false - ID 사용 가능
+     */
     @Override
-    public Optional<Member> checkIdDuplication(String userId) {
-        return findAll().stream()
-                .filter((m) -> m.getUserId().equals(userId))
-                .findFirst();
+    public boolean checkIdDuplication(String userId) {
+        return tmpDB.memberStore.containsKey(userId);
     }
 }

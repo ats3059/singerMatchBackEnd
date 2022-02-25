@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import success.singermatch.domain.member.common.LoginResponse;
-import success.singermatch.domain.member.common.LoginStatus;
+import success.singermatch.domain.member.common.MemberResponse;
+import success.singermatch.domain.member.common.MemberStatus;
 import success.singermatch.domain.member.common.SessionConst;
 import success.singermatch.domain.member.common.Member;
 import success.singermatch.domain.member.login.dto.LoginForm;
@@ -28,35 +28,18 @@ public class LoginController {
      * @throws Exception
      */
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginForm form, HttpServletRequest request) throws Exception {
+    public ResponseEntity<MemberResponse> login(@RequestBody LoginForm form, HttpServletRequest request) throws Exception {
 
         Member loginMember = loginService.login(form);
-        HttpStatus httpStatus = null;
-        String message = "";
-        String status = "fail";
 
+        // 세션에 로그인 회원 정보 보관
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
-        if (loginMember.getLoginStatus() == LoginStatus.USER_NOT_FOUND) {
-            httpStatus = HttpStatus.BAD_REQUEST;
-            message = "아이디가 존재하지 않습니다.";
-        } else if (loginMember.getLoginStatus() == LoginStatus.PASSWORD_NOT_MATCH) {
-            httpStatus = HttpStatus.BAD_REQUEST;
-            message = "비밀번호가 올바르지 않습니다.";
-        } if (loginMember.getLoginStatus() == LoginStatus.SUCCESS) {
-            httpStatus = HttpStatus.OK;
-            message = "성공!!!";
-            status = "ok";
-
-            // 세션에 로그인 회원 정보 보관
-            HttpSession session = request.getSession();
-            session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
-
-        }
-
-        return ResponseEntity.status(httpStatus)
-                .body(LoginResponse.builder()
-                        .message(message)
-                        .status(status)
+        return ResponseEntity.ok()
+                .body(MemberResponse.builder()
+                        .message(MemberStatus.SUCCESS.getReason())
+                        .status("ok")
                         .build()
                 );
     }

@@ -15,7 +15,10 @@ public class Member {
     private String userId;
 
     @NotBlank
+    // 정규식
     private String password;
+
+//    private String passwordCheck;   ??
 
     @NotBlank
     private String username;
@@ -30,6 +33,6 @@ public class Member {
 
     private String hashingPassword;
 
-    private LoginStatus loginStatus;
+    private MemberStatus memberStatus = MemberStatus.SUCCESS;
 
 }
