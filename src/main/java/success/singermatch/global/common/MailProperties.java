@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @ConfigurationProperties("spring.mail")
-// application.properties의 application.mail 부분을 여기와 맵핑시켜준다. Bean으로 등록 되어 있어야함
-// 원래는 @EnableConfigurationProperties을 추가해야하지만 boot가 알아서 처리해주기 때문에 Bean으로 등록만 하면 된다.
+/*
+    application.properties의 application.mail 부분을 여기와 맵핑시켜준다.
+    Bean으로 등록 되어 있어야함
+    원래는 @EnableConfigurationProperties을 추가해야하지만 boot가 알아서 처리해주기 때문에 Bean으로 등록만 하면 된다.
+ */
 public class MailProperties {
 
     // SMTP 서버
