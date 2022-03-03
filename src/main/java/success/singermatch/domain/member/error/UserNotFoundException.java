@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import success.singermatch.domain.member.common.MemberStatus;
 
+@Getter
 @NoArgsConstructor
 public class UserNotFoundException extends Exception {
 
@@ -18,8 +19,5 @@ public class UserNotFoundException extends Exception {
         this.memberStatus = memberStatus;
     }
 
-    public MemberStatus getMemberStatus() {
-        return this.memberStatus;
-    }
 
 }

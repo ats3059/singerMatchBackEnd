@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import success.singermatch.domain.member.common.Member;
 import success.singermatch.domain.member.common.MemberStatus;
-import success.singermatch.domain.member.error.IdDuplicationException;
 import success.singermatch.domain.member.error.MemberException;
 import success.singermatch.domain.member.signup.repository.MemberRepository;
 import success.singermatch.global.util.HashSalt;

@@ -19,9 +19,6 @@ public class JasyptConfig {
 //  2. VM Option을 이용하려면 이 방법
     private String encryptKey = System.getProperty("jasypt.encryptor.password");
 
-//    @Value("${spring.mail.password}")
-//    String password;
-
     private final static String ALGORITHM = "PBEWithMD5AndDES";
 
     @Bean("jasyptStringEncryptor")
@@ -43,9 +40,6 @@ public class JasyptConfig {
         // end default setting
 
         encryptor.setConfig(config);
-
-//        log.info("encryptKey ==== {}", encryptKey);
-//        log.info("password ==== {}", encryptor.decrypt(password));
 
         return encryptor;
     }

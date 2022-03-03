@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 public class JasyptTest {
 
     @Value("${spring.mail.password}")
@@ -15,8 +15,8 @@ public class JasyptTest {
     @Test
     void jasyptTest() {
         // 실제 비밀번호
-        String originalPassword = "xmfjkgwskeqgqrgg";
-//        String originalPassword = realPassword;
+//        String originalPassword = "xmfjkgwskeqgqrgg";
+        String originalPassword = "jinsb1995@gmail.com";
 //        String encryptKey = System.getProperty("jasypt.encryptor.password");    // Key_SingerMatch
         String encryptKey = "Key_SingerMatch";    // Key_SingerMatch
 

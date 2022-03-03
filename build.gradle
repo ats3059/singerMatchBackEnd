@@ -26,11 +26,16 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
+	// jasypt - application.properties 파일 내 비밀번호 암호화
+	implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+
+
+
 	// @ConfigurationProperties 어노테이션 추가시 메타데이터를 생성해 자동완성 기능을 가능하게 해주는 의존성
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
-	// jasypt - application.properties 파일 내 비밀번호 암호화
-	implementation group: 'org.jasypt', name: 'jasypt', version: '1.9.3'
+
+
 
 
 	compileOnly 'org.projectlombok:lombok'

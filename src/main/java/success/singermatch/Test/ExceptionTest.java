@@ -18,6 +18,9 @@ import javax.validation.constraints.NotNull;
 public class ExceptionTest {
 
 
+    @Value("${spring.mail.username}")
+    private String username;
+
     @Value("${spring.mail.password}")
     private String password;
 
@@ -28,8 +31,9 @@ public class ExceptionTest {
 
     @GetMapping("/test2")
     public String asd() {
+        System.out.println(username);
         System.out.println(password);
-        return password;
+        return "username: " + username + "        password:" + password;
     }
 
     @Getter
