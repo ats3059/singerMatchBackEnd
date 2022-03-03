@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import success.singermatch.domain.member.common.Member;
+import success.singermatch.domain.member.common.MemberStatus;
 import success.singermatch.domain.member.error.IdDuplicationException;
+import success.singermatch.domain.member.error.MemberException;
 import success.singermatch.domain.member.signup.repository.MemberRepository;
 import success.singermatch.global.util.HashSalt;
 
@@ -22,7 +24,7 @@ public class MemberService {
     public Member save(Member member) throws Exception {
 
         boolean checkId = this.checkIdDuplication(member.getUserId());
-        if (checkId) throw new IdDuplicationException("이미 사용중인 아이디 입니다.");
+        if (checkId) throw new MemberException(MemberStatus.ID_ALREADY_EXIST);
 
         // password를 hashing 처리한다.
         String salt = hashSalt.getSalt();
@@ -45,11 +47,4 @@ public class MemberService {
         return memberRepository.checkIdDuplication(userId);
     }
 
-
-    // 로그인
-//    public Member login(String loginId, String password) {
-//        return memberRepository.checkIdDuplication(loginId)
-//                .filter(m -> m.getPassword().equals(password))
-//                .orElse(null);
-//    }
 }

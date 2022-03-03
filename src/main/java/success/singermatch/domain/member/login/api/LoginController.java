@@ -37,12 +37,9 @@ public class LoginController {
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
         return ResponseEntity.ok()
-                .body(MemberResponse.builder()
-                        .message(MemberStatus.SUCCESS.getReason())
-                        .status("ok")
-                        .build()
-                );
+                .body(new MemberResponse(MemberStatus.SUCCESS.getReason(), "ok"));
     }
+
 
     @GetMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request) {
@@ -55,6 +52,7 @@ public class LoginController {
 
 
 
+//      세션이 들어있는지 확인
 //    @GetMapping("/session-info")
 //    public String sessionInfo(HttpServletRequest request) {
 //        HttpSession session = request.getSession(false);

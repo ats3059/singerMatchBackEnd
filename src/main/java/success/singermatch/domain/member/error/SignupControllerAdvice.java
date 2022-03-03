@@ -10,30 +10,38 @@ import success.singermatch.global.error.ErrorResponse;
 
 @Slf4j
 @RestControllerAdvice(basePackages = "success.singermatch.domain.member")
-
 public class SignupControllerAdvice {
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponse> userNotFoundException(Exception e) {
-        log.info(e.getMessage());
-        return new ResponseEntity(makeErrorRes(MemberStatus.USER_NOT_FOUND),HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(IdDuplicationException.class)
-    public ResponseEntity<ErrorResponse> idDuplicationException(Exception e) {
-        log.info(e.getMessage());
-        return new ResponseEntity(makeErrorRes(MemberStatus.ID_ALREADY_EXIST),HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(PasswordNotMatchException.class)
-    public ResponseEntity<ErrorResponse> passwordNotMatchException(Exception e) {
-        log.info(e.getMessage());
-        return new ResponseEntity(makeErrorRes(MemberStatus.PASSWORD_NOT_MATCH),HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(MemberException.class)
+    public ResponseEntity<ErrorResponse> memberException(MemberException e) {
+        log.info(e.getMemberStatus().getReason());
+        return new ResponseEntity(makeErrorRes(e.getMemberStatus()),HttpStatus.BAD_REQUEST);
     }
 
 
     private ErrorResponse makeErrorRes(MemberStatus ms){
         return new ErrorResponse(ms.getReason(),ms.getStatusCode(),ms.getErrCode());
     }
+
+
+
+
+//    @ExceptionHandler(UserNotFoundException.class)
+//    public ResponseEntity<ErrorResponse> userNotFoundException(UserNotFoundException e) {
+//        log.info(e.getMemberStatus().getReason());
+//        return new ResponseEntity(makeErrorRes(e.getMemberStatus()),HttpStatus.BAD_REQUEST);
+//    }
+
+//    @ExceptionHandler(IdDuplicationException.class)
+//    public ResponseEntity<ErrorResponse> idDuplicationException(Exception e) {
+//        log.info(e.getMessage());
+//        return new ResponseEntity(makeErrorRes(MemberStatus.ID_ALREADY_EXIST),HttpStatus.BAD_REQUEST);
+//    }
+//
+//    @ExceptionHandler(PasswordNotMatchException.class)
+//    public ResponseEntity<ErrorResponse> passwordNotMatchException(Exception e) {
+//        log.info(e.getMessage());
+//        return new ResponseEntity(makeErrorRes(MemberStatus.PASSWORD_NOT_MATCH),HttpStatus.BAD_REQUEST);
+//    }
 
 }

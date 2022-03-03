@@ -18,11 +18,19 @@ import javax.validation.constraints.NotNull;
 public class ExceptionTest {
 
 
+    @Value("${spring.mail.password}")
+    private String password;
+
     @PostMapping("/test")
     public String test(@Validated @RequestBody TestObject testObject) {
         return "success";
     }
 
+    @GetMapping("/test2")
+    public String asd() {
+        System.out.println(password);
+        return password;
+    }
 
     @Getter
     @Setter

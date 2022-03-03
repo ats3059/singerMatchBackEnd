@@ -9,7 +9,8 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberResponse {
 
     private String message;

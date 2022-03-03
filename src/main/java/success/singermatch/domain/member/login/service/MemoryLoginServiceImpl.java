@@ -3,6 +3,8 @@ package success.singermatch.domain.member.login.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import success.singermatch.domain.member.common.MemberStatus;
+import success.singermatch.domain.member.error.MemberException;
 import success.singermatch.domain.member.login.dto.LoginForm;
 import success.singermatch.domain.member.common.Member;
 import success.singermatch.domain.member.login.repository.LoginRepository;
@@ -25,7 +27,7 @@ public class MemoryLoginServiceImpl implements LoginService {
 
         Member member = loginRepository.findById(form);
         // 아이디가 존재하지 않음
-        if (member == null) throw new UserNotFoundException("아이디가 존재하지 않습니다.");
+        if (member == null) throw new MemberException(MemberStatus.USER_NOT_FOUND);
 
         // 입력받은 password를 hashSalt로 암호화 한다.
         String password = form.getPassword();
@@ -34,7 +36,7 @@ public class MemoryLoginServiceImpl implements LoginService {
 
         // 비밀번호가 맞지 않음
         if (!hashedPassword.equals(member.getHashingPassword()))
-            throw new PasswordNotMatchException("비밀번호가 올바르지 않습니다.");
+            throw new MemberException(MemberStatus.PASSWORD_NOT_MATCH);
 
         return member;
     }

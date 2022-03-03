@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import success.singermatch.domain.member.common.Member;
 import success.singermatch.domain.member.common.MemberResponse;
 import success.singermatch.domain.member.common.MemberStatus;
+import success.singermatch.domain.member.error.MemberException;
 import success.singermatch.domain.member.signup.repository.MemberRepository;
 import success.singermatch.domain.member.signup.service.MemberService;
 
@@ -30,11 +31,7 @@ public class MemberController {
         memberService.save(member);
 
         return ResponseEntity.ok()
-                .body(MemberResponse.builder()
-                        .message(MemberStatus.SUCCESS.getReason())
-                        .status("ok")
-                        .build()
-                );
+                .body(new MemberResponse(MemberStatus.SUCCESS.getReason(), "ok"));
     }
 
     @GetMapping("/findAll")
@@ -44,13 +41,14 @@ public class MemberController {
 
 
     @GetMapping("/check")
-    public String checkIdDuplication(String userId, Model model) {
+    public ResponseEntity<MemberResponse> checkIdDuplication(String userId, Model model) throws MemberException {
         boolean checkId = memberService.checkIdDuplication(userId);
         String msg = "";
-        if (checkId)
-            return userId + "는 이미 사용중인 아이디 입니다.";
-        else
-            return "사용가능한 아이디 입니다.";
+        /* return userId + "는 이미 사용중인 아이디 입니다." */
+        if (checkId) throw new MemberException(MemberStatus.ID_ALREADY_EXIST);
+
+        return ResponseEntity.ok()
+                .body(new MemberResponse("사용가능한 아이디 입니다.", "ok"));
     }
 
 
